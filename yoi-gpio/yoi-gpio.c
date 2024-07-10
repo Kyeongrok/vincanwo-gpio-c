@@ -169,6 +169,10 @@ int main(int argc, char **argv)
     }
     else if (argc == 2 && strcmp(argv[1], "read") == 0)
     {
+        printf("kkk\n");
+
+        int dwPortValLow = pca9555_read_byte(PCA9555_COMMAND_INPUT_PORT1); //Get GPIO1 ~GPIO8 is High or Low
+        printf("dwPortValLow:%d\n", dwPortValLow);
         // int gpio_num = atoi(argv[2]);
         int ret = iopl(3);
         uint16_t value = gpio_read();

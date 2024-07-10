@@ -247,7 +247,39 @@ ssize_t gpio_write(struct file *file, const char __user *data,
 ssize_t gpio_read(struct file *file, char __user * buf,
 		      size_t len, loff_t * ppos)
 {
-	return len;
+    int rc = 0;
+    u8 pin_index;
+    unsigned long val;
+    u8 iospace;
+
+    if (len != sizeof(u8)) {
+        return -EINVAL;
+    }
+
+    // GPIO 핀 인덱스를 사용자 공간에서 읽어오기
+    if (copy_from_user(&pin_index, buf, sizeof(u8))) {
+        return -EFAULT;
+    }
+
+    if (pin_index > MAX_GPIO_PIN) {
+        return -EINVAL;
+    }
+
+    spin_lock(&sio_lock);
+    
+    // GPIO 상태 읽기
+    val = inb(*(gpio_base_addr + pin_index));
+    iospace = (val & (1 << ((*(gpio_pin + pin_index)) % 10))) ? 1 : 0;
+
+    spin_unlock(&sio_lock);
+
+    // 읽은 GPIO 상태를 사용자 공간으로 복사
+    if (copy_to_user(buf, &iospace, sizeof(u8))) {
+        return -EFAULT;
+    }
+
+    return sizeof(u8);
+
 }
 
 

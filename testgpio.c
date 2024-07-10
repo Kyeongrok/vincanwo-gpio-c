@@ -106,6 +106,7 @@ int main(int argc, char **argv)
 			set_ledport((ledport-1),value);	
 	}
 	else if(poll_all){
+	    printf("---poll_all---");
 		poll_all_port_status();
 	}
 

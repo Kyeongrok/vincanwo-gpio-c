@@ -14,7 +14,7 @@ gcc 9.4.0
 kernel:5.15.0-67
 supported debian,fedora,centos,xubuntu
 
-본 압축 파일에는 다음 6개의 파일이 포함되어 있습니다:"
+본 압축 파일에는 다음 6개의 파일이 포함되어 있습니다:
 Makefile : makefile 파일
 readme.txt : 본 설명 파일
 sio_gpio.c : GPIO 드라이버 파일
@@ -43,7 +43,10 @@ make
 
 2. 에러가 없다면, sio_gpio.ko 파일이 생성됩니다. 드라이버를 로드합니다 (root 권한 필요).
 
+
+```bash
 insmod sio_gpio.ko
+```
 
 3. "xc_gpio" 장치 정보가 생성되었는지 확인합니다 (또는 dmesg 명령어로 드라이버가 시스템 포트 주소를 요청한 정보를 확인합니다).
 ls /dev/

@@ -48,6 +48,13 @@ make
 insmod sio_gpio.ko
 ```
 
+2.1. 드라이버를 지우고 싶다면 언로드 합니다.
+
+
+```bash
+unmod sio_gpio.ko
+```
+
 3. "xc_gpio" 장치 정보가 생성되었는지 확인합니다 (또는 dmesg 명령어로 드라이버가 시스템 포트 주소를 요청한 정보를 확인합니다).
 ls /dev/
 

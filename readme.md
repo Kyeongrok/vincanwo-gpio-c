@@ -1,4 +1,12 @@
-드라이버 및 테스트 소프트웨어 사용 방법:
+
+## 
+
+```bash
+sudo apt install -y neovim zip git gcc
+```
+
+
+## 드라이버 및 테스트 소프트웨어 사용 방법
 ubuntu Ubuntu 20.04.5
 gcc 9.4.0
 kernel:5.15.0-67

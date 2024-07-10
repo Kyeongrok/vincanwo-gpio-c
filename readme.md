@@ -1,8 +1,10 @@
 
-## 
+## Prerequisite
+
+다음 명령어를 이용해 필요한 라이브러리를 설치 합니다.
 
 ```bash
-sudo apt install -y neovim zip git gcc
+sudo apt install -y neovim zip git gcc make
 ```
 
 
